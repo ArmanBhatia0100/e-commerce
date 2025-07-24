@@ -1,5 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
+import MainBanner from "../components/banner/MainBanner";
+import ProductList from "../components/ProductList";
 
 function Homepage() {
   return (
@@ -7,6 +9,10 @@ function Homepage() {
       {/* header component */}
       <Header></Header>
       {/* main page */}
+      <div>
+        <MainBanner />
+        <ProductList />
+      </div>
     </div>
   );
 }
