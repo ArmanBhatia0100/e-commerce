@@ -12,7 +12,7 @@ function useFetchItem() {
       const data = await response.json();
 
       //   Setting the prodcust list to the context using updator function
-      context.setProductList(data);
+      context.setProductList(data.products);
     })();
   }, []);
 }

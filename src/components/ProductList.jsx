@@ -1,45 +1,14 @@
-import React from "react";
+import React, { use } from "react";
 import ProductCard from "./productCard/ProductCard";
+import useFetchItem from "../hooks/useFetchItem";
+import { ProductContext } from "../context/ProductContext";
 
 function ProductList() {
   //fetching the product from the api
   useFetchItem();
-
   // getting the products from the context
-  const { productList} = use(ProductContext);
-  // const { productList: product } = use(ProductContext);
+  const context = use(ProductContext);
 
-  const products = [
-    {
-      id: 1,
-      title: "Wireless Headphones",
-      price: 99,
-      description: "High-quality wireless sound and comfortable design.",
-      thumbnail: "https://dummyimage.com/300x300/000/fff&text=Headphones",
-    },
-    {
-      id: 2,
-      title: "Smartwatch",
-      price: 149,
-      description: "Track your fitness and stay connected on the go.",
-      thumbnail: "https://dummyimage.com/300x300/000/fff&text=Smartwatch",
-    },
-    {
-      id: 3,
-      title: "Gaming Mouse",
-      price: 59,
-      description: "Precision control and ergonomic design for gamers.",
-      thumbnail: "https://dummyimage.com/300x300/000/fff&text=Mouse",
-    },
-    {
-      id: 4,
-      title: "Bluetooth Speaker",
-      price: 79,
-      description: "Portable and powerful sound with long battery life.",
-      thumbnail: "https://dummyimage.com/300x300/000/fff&text=Speaker",
-    },
-    // Add more products as needed
-  ];
 
   const handleAddToCart = (product) => {
     console.log("Added to cart:", product);
@@ -50,13 +19,13 @@ function ProductList() {
     <div className="mx-auto px-8 py-8">
       <h2 className="mb-6 font-bold text-2xl">Our Products</h2>
       <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            onAddToCart={handleAddToCart}
-          />
-        ))}
+
+        {/* if the product list is not empty show products */}
+        {context.productList.length > 0 ? (
+          context.productList.map((product) => <ProductCard />)
+        ) : (
+          <h1>Loading Products</h1>
+        )}
       </div>
     </div>
   );

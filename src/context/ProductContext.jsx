@@ -3,7 +3,7 @@ import { Children, createContext, useState } from "react";
 const ProductContext = createContext(null);
 
 function ProductProvider({ children }) {
-  const [productList, setProductList] = useState(null);
+  const [productList, setProductList] = useState([]);
 
   const contextItems = {
     productList,
