@@ -41,7 +41,7 @@ function ProductList() {
   };
 
   return (
-    <div className="mx-auto px-4 py-8 container">
+    <div className="mx-auto px-8 py-8">
       <h2 className="mb-6 font-bold text-2xl">Our Products</h2>
       <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products.map(product => (
