@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import MainBanner from "../components/banner/MainBanner";
 import ProductList from "../components/ProductList";
+import CartPage from "./Cart";
 
 function Homepage() {
   return (
@@ -13,6 +14,7 @@ function Homepage() {
         <MainBanner />
         <ProductList />
       </div>
+  
     </div>
   );
 }
