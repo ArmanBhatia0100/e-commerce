@@ -1,20 +1,23 @@
-import React from 'react';
+import React from "react";
 
-function ProductCard() {
+function ProductCard({ product }) {
   // Hardcoded values from your JSON
-  const product = {
-    id: 78,
-    title: "Apple MacBook Pro 14 Inch Space Grey",
-    description: "The MacBook Pro 14 Inch in Space Grey is a powerful and sleek laptop, featuring Apple's M1 Pro chip for exceptional performance and a stunning Retina display.",
-    brand: "Apple",
-    price: 1999.99,
-    discountPercentage: 4.69,
-    rating: 3.65,
-    stock: 24,
-    thumbnail: "https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/thumbnail.webp",
-  };
+  const {
+    id,
+    title,
+    description,
+    brand,
+    price,
+    discountPercentage,
+    rating,
+    stock,
+    thumbnail,
+  } = product;
 
-  const discountedPrice = (product.price * (1 - product.discountPercentage / 100)).toFixed(2);
+  const discountedPrice = (
+    product.price *
+    (1 - product.discountPercentage / 100)
+  ).toFixed(2);
 
   return (
     <div className="flex flex-col bg-white shadow hover:shadow-lg p-4 rounded-lg transition">
@@ -44,13 +47,13 @@ function ProductCard() {
       <div className="flex items-center space-x-2 mt-auto">
         <span className="font-semibold text-blue-600">${discountedPrice}</span>
         {product.discountPercentage > 0 && (
-          <span className="text-gray-400 text-sm line-through">${product.price.toFixed(2)}</span>
+          <span className="text-gray-400 text-sm line-through">
+            ${product.price.toFixed(2)}
+          </span>
         )}
       </div>
 
-      <button
-        className="bg-blue-600 hover:bg-blue-700 mt-3 px-3 py-1 rounded text-white text-sm transition-colors"
-      >
+      <button className="bg-blue-600 hover:bg-blue-700 mt-3 px-3 py-1 rounded text-white text-sm transition-colors">
         Add to Cart
       </button>
     </div>

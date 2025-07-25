@@ -22,7 +22,7 @@ function ProductList() {
 
         {/* if the product list is not empty show products */}
         {context.productList.length > 0 ? (
-          context.productList.map((product) => <ProductCard />)
+          context.productList.map((product) => <ProductCard product={product}/>)
         ) : (
           <h1>Loading Products</h1>
         )}
