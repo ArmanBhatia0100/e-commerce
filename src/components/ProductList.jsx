@@ -18,7 +18,7 @@ function ProductList() {
   return (
     <div className="mx-auto px-8 py-8">
       <h2 className="mb-6 font-bold text-2xl">Our Products</h2>
-      <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="justify-center items-center gap-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
         {/* if the product list is not empty show products */}
         {context.productList.length > 0 ? (
