@@ -1,20 +1,17 @@
-import { useEffect, use } from "react";
-import { ProductContext } from "../context/ProductContext";
+import React, { useEffect, useState } from "react";
 
-function useFetchItem() {
-  // Get the context from the product context
-  const context = use(ProductContext);
+function useFetchItem(productID) {
+  const [product, setProduct] = useState(null);
 
-  // Fetching and storing products in context
   useEffect(() => {
-    (async () => {
-      const response = await fetch("https://dummyjson.com/products");
-      const data = await response.json();
-
-      //   Setting the prodcust list to the context using updator function
-      context.setProductList(data.products);
-    })();
+    async function getProduct() {
+      const res = await fetch("https://dummyjson.com/product/"+ productID);
+      const data = await res.json();
+      setProduct(data);
+    }
+    getProduct();
   }, []);
+  return product;
 }
 
 export default useFetchItem;

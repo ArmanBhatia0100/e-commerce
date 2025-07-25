@@ -1,11 +1,11 @@
 import React, { use } from "react";
 import ProductCard from "./productCard/ProductCard";
-import useFetchItem from "../hooks/useFetchItem";
+import useFetchAllItem from "../hooks/useFetchAllItem";
 import { ProductContext } from "../context/ProductContext";
 
 function ProductList() {
   //fetching the product from the api
-  useFetchItem();
+  useFetchAllItem();
   // getting the products from the context
   const context = use(ProductContext);
 
