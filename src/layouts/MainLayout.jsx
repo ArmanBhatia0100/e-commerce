@@ -6,8 +6,7 @@ function MainLayout() {
   return (
     <div>
       <Header></Header>
-
-      <main>
+      <main className="min-h-[80vh]">
         <Outlet /> {/* This renders the matched child route */}
       </main>
 
