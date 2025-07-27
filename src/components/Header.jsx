@@ -1,8 +1,10 @@
-import React from "react";
-import { FaUserCircle, FaShoppingCart } from "react-icons/fa";
+import React, { use } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartProvider";
 
 function Header() {
+  const { cartItems } = use(CartContext);
   return (
     <header className="flex justify-between items-center bg-white shadow-md px-4 py-3">
       {/* Logo */}
@@ -20,6 +22,9 @@ function Header() {
 
       {/* Icons */}
       <div className="flex items-center space-x-4 text-gray-600">
+        <div className="-top-4 left-12 relative flex justify-center bg-slate-700 rounded-3xl w-4 h-fit font-bold text-white">
+          {cartItems.length}
+        </div>
         <Link to="cart">
           <button
             type="button"
