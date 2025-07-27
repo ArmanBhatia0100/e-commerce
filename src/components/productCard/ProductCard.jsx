@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function ProductCard({ product }) {
+function ProductCard({ product, addToCart }) {
   // Hardcoded values from your JSON
   const {
     id: productID,
@@ -64,7 +64,13 @@ function ProductCard({ product }) {
             )}
           </div>
 
-          <button className="bg-blue-600 hover:bg-blue-700 mt-3 px-3 py-1 rounded text-white text-sm transition-colors">
+          <button
+            className="bg-blue-600 hover:bg-blue-700 mt-3 px-3 py-1 rounded text-white text-sm transition-colors"
+            onClick={(e) => {
+              e.preventDefault();
+              addToCart(product);
+            }}
+          >
             Add to Cart
           </button>
         </div>
