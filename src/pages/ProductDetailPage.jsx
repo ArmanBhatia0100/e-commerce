@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { FaStar, FaCartPlus } from "react-icons/fa";
 import useFetchItem from "../hooks/useFetchItem";
 import { useParams } from "react-router-dom";
 import ScrollToTop from "../util/ScrollToTop";
+import { CartContext } from "../context/CartProvider";
 
 function ProductDetailPage() {
-
   // This funtion will scroll the page to top.
   // by defult reouter-dom keep the scroll
   ScrollToTop();
   const { productID } = useParams();
   const product = useFetchItem(productID);
   const [quantity, setQuantity] = useState(1);
+
+  const { addToCart } = use(CartContext);
 
   if (!product) {
     return <div className="py-10 text-gray-500 text-center">Loading...</div>;
@@ -126,6 +128,10 @@ function ProductDetailPage() {
 
         <button
           className="flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 shadow-md mt-2 px-6 py-2 rounded-full text-white transition"
+          onClick={(e) => {
+            e.preventDefault();
+            addToCart(product);
+          }}
         >
           <FaCartPlus />
           Add to Cart

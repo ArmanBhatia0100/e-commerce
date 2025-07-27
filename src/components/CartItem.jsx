@@ -11,7 +11,7 @@ function CartItem({ product, onQuantityChange, onRemove }) {
       />
       <div className="flex-1">
         <h3 className="font-semibold">{product.title}</h3>
-        <p className="text-gray-500 text-sm truncate">{product.description}</p>
+        <p className="text-gray-500 text-sm truncate">{product.description.slice(0,20)}</p>
         <p className="mt-1 font-semibold text-blue-600">${product.price}</p>
       </div>
       <div className="flex items-center gap-2">

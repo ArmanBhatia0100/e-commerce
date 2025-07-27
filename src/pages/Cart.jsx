@@ -1,36 +1,21 @@
-import React, { useState } from 'react';
-import CartItem from '../components/CartItem';
+import React, { use, useState } from "react";
+import CartItem from "../components/CartItem";
+import { CartContext } from "../context/CartProvider";
 
 function CartPage() {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      title: 'Wireless Headphones',
-      price: 99,
-      description: 'High-quality wireless sound and comfortable design.',
-      thumbnail: 'https://dummyimage.com/300x300/000/fff&text=Headphones',
-      quantity: 1,
-    },
-    {
-      id: 2,
-      title: 'Smartwatch',
-      price: 149,
-      description: 'Track your fitness and stay connected on the go.',
-      thumbnail: 'https://dummyimage.com/300x300/000/fff&text=Smartwatch',
-      quantity: 2,
-    },
-  ]);
+  const {cartItems} = use(CartContext)
 
   const handleQuantityChange = (id, quantity) => {
-    setCartItems(prev =>
-      prev.map(item =>
-        item.id === id ? { ...item, quantity } : item
-      )
+    setCartItems((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, quantity } : item)),
     );
   };
 
   // Calculate subtotal
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
 
   return (
     <div className="gap-8 grid grid-cols-1 lg:grid-cols-3 mx-auto px-4 py-8 container">
@@ -38,13 +23,17 @@ function CartPage() {
       <div className="lg:col-span-2">
         <h2 className="mb-4 font-bold text-2xl">Shopping Cart</h2>
         <div className="bg-white shadow p-4 rounded">
-          {cartItems.map(item => (
-            <CartItem
-              key={item.id}
-              product={item}
-              onQuantityChange={handleQuantityChange}
-            />
-          ))}
+          {cartItems.length <= 0 ? (
+            <h3 className="font-bold text-xl">No items in the cart</h3>
+          ) : (
+            cartItems.map((item) => (
+              <CartItem
+                key={item.id}
+                product={item}
+                onQuantityChange={handleQuantityChange}
+              />
+            ))
+          )}
         </div>
       </div>
 
@@ -63,9 +52,15 @@ function CartPage() {
           <span>Total</span>
           <span>${subtotal.toFixed(2)}</span>
         </div>
-        <button className="bg-blue-600 hover:bg-blue-700 mt-4 py-2 rounded w-full text-white transition-colors">
-          Checkout
-        </button>
+        {cartItems.length <= 0 ? (
+          <button disabled="true" className="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-400 mt-4 py-2 rounded w-full text-white transition-colors cursor-not-allowed">
+            Checkout
+          </button>
+        ) : (
+          <button className="bg-blue-600 hover:bg-blue-700 mt-4 py-2 rounded w-full text-white transition-colors cursor">
+            Checkout
+          </button>
+        )}
       </div>
     </div>
   );
