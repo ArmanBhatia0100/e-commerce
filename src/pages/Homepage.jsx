@@ -6,7 +6,7 @@ import ProductFilters from "../components/ProductFilter";
 function Homepage() {
 
   return (
-    <div>
+    <div className="bg-slate-100">
       <MainBanner />
       <ProductFilters />
       <ProductList />
