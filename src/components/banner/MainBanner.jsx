@@ -8,7 +8,7 @@ function MainBanner() {
       <div className="w-full h-full">
         {/* Desktop banner */}
         <img
-          src="/public/banner_med_ro_lg_screen.png"
+          src="/banner_med_ro_lg_screen.png"
           alt="Banner"
           className="hidden md:block w-full h-[400px] object-fill"
         />
