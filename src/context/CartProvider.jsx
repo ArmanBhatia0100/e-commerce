@@ -11,10 +11,17 @@ function CartProvider({ children }) {
     setCartItems((prev) => [...prev, cartItem]);
   }
 
+  function deleteFromCart(productID) {
+    setCartItems((prev) => {
+      return prev.filter((product) => product.id != productID);
+    });
+  }
+
   console.log(cartItems);
   const cartContextItems = {
     cartItems,
     addToCart,
+    deleteFromCart
   };
 
   return (
