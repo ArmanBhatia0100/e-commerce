@@ -12,10 +12,10 @@ function CartPage() {
   };
 
   // Calculate subtotal
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+  const subtotal = cartItems.length >0?  cartItems.reduce(
+    (sum, item) => sum + item.price * item.qty,
     0,
-  );
+  ): 0.00;
 
   return (
     <div className="gap-8 grid grid-cols-1 lg:grid-cols-3 mx-auto px-4 py-8 container">

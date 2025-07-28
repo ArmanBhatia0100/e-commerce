@@ -7,8 +7,8 @@ import React from "react";
 function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
 
-  function addToCart(cartItem) {
-    setCartItems((prev) => [...prev, cartItem]);
+  function addToCart(cartItem, qty=1) {
+    setCartItems((prev) => [...prev, { ...cartItem, qty: qty }]);
   }
 
   function deleteFromCart(productID) {
@@ -20,7 +20,7 @@ function CartProvider({ children }) {
   const cartContextItems = {
     cartItems,
     addToCart,
-    deleteFromCart
+    deleteFromCart,
   };
 
   return (

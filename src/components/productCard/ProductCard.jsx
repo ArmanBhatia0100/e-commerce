@@ -70,7 +70,7 @@ function ProductCard({ product, addToCart }) {
             className="bg-blue-600 hover:bg-blue-700 mt-3 px-3 py-1 rounded text-white text-sm transition-colors"
             onClick={(e) => {
               e.preventDefault();
-              addToCart(product);
+              addToCart(product, 1);
             }}
           >
             Add to Cart
