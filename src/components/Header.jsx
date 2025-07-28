@@ -4,10 +4,13 @@ import React, { use } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartProvider";
+import { ProductContext } from "../context/ProductContext";
 
 function Header() {
   // Access cart items from context to display cart count
   const { cartItems } = use(CartContext);
+  const { searchProductByName } = use(ProductContext);
+
   return (
     <header className="flex justify-between items-center bg-white shadow-md px-4 py-3">
       {/* Logo section, links to homepage */}
@@ -20,6 +23,7 @@ function Header() {
           type="text"
           placeholder="Search products..."
           className="px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+          onChange={(e) => searchProductByName(e.target.value)}
         />
       </div>
 

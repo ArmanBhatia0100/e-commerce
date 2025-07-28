@@ -26,7 +26,7 @@ function ProductList() {
             <ProductCard key={index} addToCart={addToCart} product={product} />
           ))
         ) : (
-          <h1>Loading Products</h1>
+          <h1>No Product.</h1>
         )}
       </div>
     </div>
