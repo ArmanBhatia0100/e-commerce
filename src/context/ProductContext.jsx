@@ -4,10 +4,14 @@ const ProductContext = createContext(null);
 
 function ProductProvider({ children }) {
   const [productList, setProductList] = useState([]);
+  const [productFilteredList, setProductFilteredList] = useState([]);
+
 
   const contextItems = {
     productList,
     setProductList,
+    productFilteredList,
+    setProductFilteredList
   };
 
   return (

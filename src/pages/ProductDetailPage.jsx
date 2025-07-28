@@ -1,9 +1,9 @@
 import React, { use, useState } from "react";
-import { FaStar, FaCartPlus } from "react-icons/fa";
-import useFetchItem from "../hooks/useFetchItem";
+import { FaCartPlus, FaStar } from "react-icons/fa";
 import { useParams } from "react-router-dom";
-import ScrollToTop from "../util/ScrollToTop";
 import { CartContext } from "../context/CartProvider";
+import useFetchItem from "../hooks/useFetchItem";
+import ScrollToTop from "../util/ScrollToTop";
 
 function ProductDetailPage() {
   // This funtion will scroll the page to top.
