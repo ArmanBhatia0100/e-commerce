@@ -6,27 +6,30 @@ import { ProductContext } from "../context/ProductContext";
 
 function ProductFilters() {
   // Access product list and filter setters from context
-  const { productList, setProductList, setProductFilteredList } =
-    use(ProductContext);
+  const { productList, setProductFilteredList } = use(ProductContext);
+
   // Ref for the category select dropdown
   const categoryRef = useRef(null);
+  const sortRef = useRef(null);
+
   // Extract all categories from the product list
   const categories = productList.map((product) => {
     return product.category;
   });
+
   // Get unique categories for the dropdown
   const uniqueCategories = [...new Set([...categories])];
 
   // Handler for category dropdown change
   function categoryChangehandler() {
     const selectedValue = categoryRef.current.value;
+
     setProductFilteredList((prev) => {
       return productList.filter((product) => {
         if (selectedValue != "all") {
-         return product.category === selectedValue;
-        }
-        else{
-          return productList
+          return product.category === selectedValue;
+        } else {
+          return productList;
         }
       });
     });
@@ -34,12 +37,15 @@ function ProductFilters() {
 
   return (
     <div className="flex md:flex-row flex-col justify-start items-center gap-4 md:gap-6 bg-white shadow-sm mb-2 p-4 rounded-lg">
-      <h3 className="font-semibold text-xl">Filters</h3>
+      
       {/* Sort dropdown (UI only, not yet functional) */}
-      <div className="flex items-center gap-2">
+      <div className="hidden flex items-center gap-2">
         <FaSortAmountDown className="text-gray-500" />
-        <select className="px-3 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
-          <option value="">Relivence</option>
+        <select
+          ref={sortRef}
+          className="px-3 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+        >
+          <option value="">Relevance</option>
           <option value="price-asc">Price: Low → High</option>
           <option value="price-desc">Price: High → Low</option>
           <option value="newest">Newest</option>

@@ -34,14 +34,16 @@ function ProductCard({ product, addToCart }) {
             {product.title}
           </h3>
 
-          <p className="mb-2 text-gray-500 text-sm line-clamp-2">
+          <p className="mb-6 h-22 overflow-hidden text-gray-500 text-sm line-clamp-2">
             {product.description}
           </p>
 
-          <div className="flex justify-between items-center mb-2">
+          <div className="flex justify-between items-center h-6 overflow-hidden">
             <span className="text-gray-500 text-sm">
               Brand: {product.brand}
             </span>
+          </div>
+          <div className="mb-1">
             <span className="text-gray-500 text-sm">
               Stock: {product.stock}
             </span>

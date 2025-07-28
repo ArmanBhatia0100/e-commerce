@@ -13,6 +13,7 @@ function useFetchAllItem() {
 
       //   Setting the prodcust list to the context using updator function
       context.setProductList(data.products);
+      context.setProductFilteredList(data.products);
     })();
   }, []);
 }
