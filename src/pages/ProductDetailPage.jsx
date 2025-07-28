@@ -130,7 +130,7 @@ function ProductDetailPage() {
           className="flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 shadow-md mt-2 px-6 py-2 rounded-full text-white transition"
           onClick={(e) => {
             e.preventDefault();
-            addToCart(product);
+            addToCart(product, quantity);
           }}
         >
           <FaCartPlus />

@@ -34,7 +34,7 @@ function CartItem({ product, onQuantityChange, onRemove }) {
         <input
           type="number"
           min="1"
-          value={product.quantity}
+          value={product.qty}
           onChange={(e) => onQuantityChange(product.id, Number(e.target.value))}
           className="py-1 border rounded w-16 text-center"
         />
