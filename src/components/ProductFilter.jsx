@@ -1,10 +1,18 @@
-import React from 'react';
-import { FaSortAmountDown } from 'react-icons/fa';
+import React, { use } from "react";
+import { FaSortAmountDown } from "react-icons/fa";
+import { ProductContext } from "../context/ProductContext";
 
 function ProductFilters() {
+  const { productList } = use(ProductContext);
+
+  const categories = productList.map((product) => {
+    return product.category;
+  });
+  const uniqueCategories = [...new Set([...categories])];
+
   return (
-    <div className="flex md:flex-row flex-col justify-center items-center gap-4 md:gap-6 bg-white shadow-sm mb-2 p-4 rounded-lg">
-      
+    <div className="flex md:flex-row flex-col justify-start items-center gap-4 md:gap-6 bg-white shadow-sm mb-2 p-4 rounded-lg">
+      <h3 className="font-semibold text-xl">Filters</h3>
       {/* Sort */}
       <div className="flex items-center gap-2">
         <FaSortAmountDown className="text-gray-500" />
@@ -17,21 +25,15 @@ function ProductFilters() {
       </div>
 
       {/* Categories */}
-      <div className="flex flex-row flex-wrap justify-center items-center gap-2">
-        <h4 className="text-gray-600 text-sm">Categories:</h4>
-        <button className="hover:bg-blue-600 px-3 py-1 border border-gray-300 rounded-full hover:text-white text-sm transition-colors">All</button>
-        <button className="bg-blue-600 px-3 py-1 border border-gray-300 rounded-full text-white text-sm">Electronics</button>
-        <button className="hover:bg-blue-600 px-3 py-1 border border-gray-300 rounded-full hover:text-white text-sm transition-colors">Accessories</button>
-        <button className="hover:bg-blue-600 px-3 py-1 border border-gray-300 rounded-full hover:text-white text-sm transition-colors">Clothing</button>
-      </div>
-
-      {/* Materials */}
-      <div className="flex flex-row flex-wrap justify-center items-center gap-2">
-        <span className="text-gray-600 text-sm">Materials:</span>
-        <button className="hover:bg-green-600 px-3 py-1 border border-gray-300 rounded-full hover:text-white text-sm transition-colors">Leather</button>
-        <button className="hover:bg-green-600 px-3 py-1 border border-gray-300 rounded-full hover:text-white text-sm transition-colors">Metal</button>
-        <button className="hover:bg-green-600 px-3 py-1 border border-gray-300 rounded-full hover:text-white text-sm transition-colors">Plastic</button>
-      </div>
+      <h2 className="-mr-5">Categories</h2>
+      <select className="px-3 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+        <option value="">All</option>
+        {uniqueCategories.map((category,index) => (
+          <option key={index} value="category">
+            {category[0].toUpperCase() + category.slice(1)}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }

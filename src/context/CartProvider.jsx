@@ -17,7 +17,6 @@ function CartProvider({ children }) {
     });
   }
 
-  console.log(cartItems);
   const cartContextItems = {
     cartItems,
     addToCart,

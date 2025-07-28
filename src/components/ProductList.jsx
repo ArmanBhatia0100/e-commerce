@@ -18,8 +18,8 @@ function ProductList() {
       <div className="justify-center items-center gap-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {/* if the product list is not empty show products */}
         {productContext.productList.length > 0 ? (
-          productContext.productList.map((product) => (
-            <ProductCard addToCart={addToCart} product={product} />
+          productContext.productList.map((product,index) => (
+            <ProductCard key={index} addToCart={addToCart} product={product} />
           ))
         ) : (
           <h1>Loading Products</h1>
